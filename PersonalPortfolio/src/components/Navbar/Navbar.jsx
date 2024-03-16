@@ -1,12 +1,38 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import { Button, Container} from '@radix-ui/themes';
-import { HamburgerMenuIcon, DropdownMenuIcon } from '@radix-ui/react-icons';
 import {NavLink} from "react-router-dom"
 
 function Navbar() {
-  
+  const [appToggle, setAppToggle] = useState(true)
   const [menuToggle, setmenuToggle] = useState(true)
   const [submenuToggle, setSubmenuToggle] = useState(true)
+
+  const appdropdownRef = useRef(null)
+  const menudropdownRef = useRef(null)
+  const submenudropdownRef = useRef(null)
+
+  useEffect(()=>{
+    function handleOutsideClick(event){
+      if (appdropdownRef.current && !appdropdownRef.current.contains(event.target)){
+        setAppToggle(true)
+      }
+      if (menudropdownRef.current && !menudropdownRef.current.contains(event.target)){
+        setmenuToggle(true)  
+      }
+      if (submenudropdownRef.current && !submenudropdownRef.current.contains(event.target)){
+        setSubmenuToggle(true)}
+
+      
+    }
+    
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+
+  }, [])
+  
 
   return (
     <div className='w-screen h-14 bg-gray-900 flex items-center'>
@@ -28,8 +54,36 @@ function Navbar() {
               <NavLink to={"/Projects"}
               className={({isActive})=>`${isActive?"text-blue-500":"text-gray-100"}`}>Projects</NavLink>
 
-              <NavLink to={"/Apps"}
-              className={({isActive})=>`${isActive?"text-blue-500":"text-gray-100"}`}>Apps</NavLink>
+              <div className='text-center'>
+                <NavLink to={"/Apps"}
+                className={({isActive})=>`${isActive?"text-blue-500":"text-gray-100"}`}
+                onClick={()=>setAppToggle(prev=>!prev)}>Apps</NavLink>
+
+                {/* ====== SubMenu ===== */}
+                <div ref={appdropdownRef} className={`absolute top-16 
+                ${appToggle?"invisible":"visible"}`}>
+                  <div className='relative right-16 w-[160px] h-40 bg-gray-800 opacity-70 text-center rounded'>
+                        
+                  <ul className='w-full h-full flex flex-col justify-center space-y-2'>
+
+                    <NavLink to={'apps/passwordGenerate'}
+                    className={({isActive})=>`${isActive?"text-blue-300":"text-white"}`}>
+                    Password Generator</NavLink>
+
+                    <NavLink to={'apps/CurrConvert'}
+                    className={({isActive})=>`${isActive?"text-blue-300":"text-white"}`}>
+                    Currency Convertor</NavLink>
+
+                    <NavLink to={'apps/TodoApp'}
+                    className={({isActive})=>`${isActive?"text-blue-300":"text-white"}`}>
+                    TodoApp</NavLink>
+
+                  </ul>
+                        
+                  </div>
+
+                </div>
+              </div>
 
               <NavLink to={"/AboutUs"}
               className={({isActive})=>`${isActive?"text-blue-500":"text-gray-100"}`}>About Me</NavLink>
@@ -52,7 +106,7 @@ function Navbar() {
               &#9776;
             </div>
 
-            <div className={`relative top-5 bg-gray-800 opacity-60 rounded w-[160px] h-40 border-gray-700 border-2
+            <div ref={menudropdownRef} className={`relative top-5 bg-gray-800 opacity-60 rounded w-[160px] h-40 border-gray-700 border-2
             ${menuToggle?"invisible":"visible" }`}
             >
               <div className='w-full h-full'>
@@ -76,7 +130,7 @@ function Navbar() {
 
 
               {/* SUBMENU */}
-              <div className={`relative bottom-24 right-40 w-full h-[80%] bg-gray-800  rounded
+              <div ref={submenudropdownRef} className={`relative bottom-24 right-40 w-full h-[80%] bg-gray-800  rounded
               ${submenuToggle?"hidden":"block"}`}>
                   
                   <ul className='w-full h-full flex flex-col justify-center space-y-2'>
