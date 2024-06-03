@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import {NextUIProvider} from "@nextui-org/react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -15,8 +16,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} dark  bg-HeroBg`}>
+        <NextUIProvider>
+        {children}
+        </NextUIProvider>
+        </body>
     </html>
+    
   );
 }
