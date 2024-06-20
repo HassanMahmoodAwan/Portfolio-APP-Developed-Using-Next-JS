@@ -11,20 +11,25 @@ export default function Header() {
         text-transparent bg-clip-text">Hassan M.</p>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-8" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
-            Features
+            Projects
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" aria-current="page">
-            Customers
+            Blogs
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#">
-            Integrations
+            About Me
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Contact Me
           </Link>
         </NavbarItem>
       </NavbarContent>

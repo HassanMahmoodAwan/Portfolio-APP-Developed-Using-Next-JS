@@ -33,14 +33,14 @@ function Hero() {
             </h3>
               
               
-            <div className='w-[800px] pt-4'>
-                <p className='text-base text-slate-500'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita excepturi quo ullam esse quos illo, quam eius alias nulla deleniti, at laboriosam voluptate! Quaerat sequi quo quisquam tempora non ad! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, nam!</p>
+            <div className='w-[800px] pt-2'>
+                <p className='text-base text-slate-500'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita excepturi quo ullam esse quos illo, quam eius alias nulla deleniti, at laboriosam voluptate, nam!</p>
             </div>
             <div className='pt-8'>
                 <button className='px-5 py-2 rounded bg-sky-500 text-black font-bold space-x-2'>
                     <img src="/icons/download.svg" alt="downloadIcon" className='w-8 h-7 text-black font-extrabold inline' />
                     {/* <DownloadIcon className="w-5 h-5 mr-2 text-black" /> */}
-                    <span className='pt-1'>Hassan's Resume</span></button>
+                    <span className='pt-2'>Hassan's Resume</span></button>
             </div>
             
         
