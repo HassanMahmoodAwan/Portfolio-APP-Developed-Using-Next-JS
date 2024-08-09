@@ -16,11 +16,11 @@ function Hero() {
             <h3 className='text-4xl font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-transparent bg-clip-text'>
             <TypeAnimation
               sequence={[
-                'Web Development', 1000, 
-                'Web Designs',  1500, 
-                'Backend Development', 1500,
-                'System Design', 1500,                  
-                'Machine Learning / AI', 1500, 
+                'Data Science', 1000, 
+                'System Design',  1500, 
+                'Machine Learning / AI', 1500,
+                'Web Development', 1500,                  
+                'Backend Development', 1500, 
                 () => {
                   console.log('Sequence completed');
                 },

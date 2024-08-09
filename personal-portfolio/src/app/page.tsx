@@ -4,6 +4,7 @@ import Header from "@/components/Header_Footer/Header";
 import Hero from "@/components/Hero/Hero";
 import AboutMe from "@/components/AboutMe/AboutMe";
 import ContactUs from "@/components/ContactUs/ContactUs";
+import Footer from "@/components/Footer/Footer";
 
 
 export default function Home() {
@@ -13,7 +14,8 @@ export default function Home() {
       <Hero />
       <AboutMe />
       <ContactUs />
-      <h1 className="text-5xl">Hello Hassan</h1>
+      <Footer />
+      {/* <h1 className="text-5xl">Hello Hassan</h1> */}
     </>
   );
 }
